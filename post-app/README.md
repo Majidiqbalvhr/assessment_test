@@ -7,6 +7,77 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+
+
+
+# Project Name
+
+## Introduction
+
+This project is a Laravel-based application that allows users to view and manage posts. The application includes functionality for users to log in and view top posts. Additionally, a daily email digest of top posts is sent to all users.
+
+## Requirements
+
+- PHP >=  8.1.10
+- Composer
+- Laravel 10.x
+- MySQL
+
+## Setup Instructions
+
+### Step 1: Install Dependencies
+composer install
+
+### Step 2:  Run Migrations
+php artisan migrate
+
+### Step 3:  Seed the Database
+php artisan db:seed
+
+
+### Step 4:  Run the Development Server
+php artisan serve
+
+
+### Step 5:  Run the Development Server
+http://localhost:8000/login
+
+
+### Step 6:  Sending Scheduled Emails
+php artisan send:daily-top-posts-digest
+
+### Step 7:  Scheduling the Email Digest
+To schedule the daily email digest to be sent automatically every day, you can add the following entry to your app/Console/Kernel.php:
+which i have already added
+ protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('send:daily-top-posts-digest')
+            ->daily();
+    }
+
+
+### Step 8:  Scheduling the Email Digest
+
+php artisan schedule:run
+
+
+
+Additional Information
+Make sure you have correctly set up your email configuration in the .env file for sending emails.
+MAIL_MAILER=smtp
+MAIL_HOST=your_smtp_server
+MAIL_PORT=587
+MAIL_USERNAME=your_email@example.com
+MAIL_PASSWORD=your_email_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your_email@example.com
+MAIL_FROM_NAME="Your Name"
+
+
+while i have added SMTP Configrature
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
